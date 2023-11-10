@@ -46,10 +46,10 @@ class Distribution extends Resource
 
     /**
      * This property refers to the file format of the Distribution.
-     * @var \PHP_DCAT_AP\DCAT\MediaType
+     * @var \PHP_DCAT_AP\DCAT\FileFormat
      */
     #[URI('http://purl.org/dc/terms/format')]
-    public MediaType $format;
+    public FileFormat $format;
 
     /**
      * This property refers to the licence under which the Distribution is made available.

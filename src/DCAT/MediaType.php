@@ -26,6 +26,30 @@ class MediaType extends Resource
      * STATIC CONSTRUCTORS
      *********************************************************************************************/
     /**
+     * @return MediaType The IANA media type application/json
+     */
+    public static function JSON(): MediaType
+    {
+        return new self(uri: 'https://www.iana.org/assignments/media-types/application/json');
+    }
+
+    /**
+     * @return MediaType The IANA media type for TTL syntax RDF data: text/turtle
+     */
+    public static function TURTLE(): MediaType
+    {
+        return new self(uri: 'https://www.iana.org/assignments/media-types/text/turtle');
+    }
+
+    /**
+     * @return MediaType The IANA media type for MS Excel
+     */
+    public static function XLSX(): MediaType
+    {
+        return new self(uri: 'https://www.iana.org/assignments/media-types/application/vnd.ms-excel');
+    }
+
+    /**
      * @return MediaType The IANA media type application/xml
      */
     public static function XML(): MediaType
@@ -39,21 +63,5 @@ class MediaType extends Resource
     public static function YAML(): MediaType
     {
         return new self(uri: 'https://www.iana.org/assignments/media-types/application/yaml');
-    }
-
-    /**
-     * @return MediaType The IANA media type for TTL syntax RDF data: text/turtle
-     */
-    public static function TURTLE(): MediaType
-    {
-        return new self(uri: 'https://www.iana.org/assignments/media-types/text/turtle');
-    }
-
-    /**
-     * @return MediaType The IANA media type application/json
-     */
-    public static function JSON(): MediaType
-    {
-        return new self(uri: 'https://www.iana.org/assignments/media-types/application/json');
     }
 }
