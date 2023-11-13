@@ -3,6 +3,7 @@
 namespace PHP_DCAT_AP\DCAT;
 
 use PHP_DCAT_AP\Attribute\URI;
+use PHP_DCAT_AP\Exception\MissingMandatoryPropertyException;
 use PHP_DCAT_AP\Interface\DCATClassInterface;
 use ReflectionClass;
 
@@ -45,7 +46,7 @@ class Resource implements DCATClassInterface
 
         foreach (static::$REQUIRED_PROPERTIES as $property) {
             if (!$reflection->hasProperty($property)) {
-                throw new \Exception("Mandatory property '{$property}' not defined for class '{$reflection->getName()}'");
+                throw new MissingMandatoryPropertyException("Mandatory property '{$property}' not defined for class '{$reflection->getName()}'");
             }
         }
 
@@ -60,18 +61,18 @@ class Resource implements DCATClassInterface
             }
 
             if (!$property->isInitialized($this)) {
-                throw new \Exception("Missing mandatory property '{$property->getName()}' for resource '{$this->uri}'");
+                throw new MissingMandatoryPropertyException("Missing mandatory property '{$property->getName()}' for resource '{$this->uri}'");
             }
 
             // For array type, check for at least 1 value
             $value = $property->getValue($this);
             if (is_array($value) && count($value) === 0) {
-                throw new \Exception("Missing mandatory property '{$property->getName()}' for resource '{$this->uri}'");
+                throw new MissingMandatoryPropertyException("Missing mandatory property '{$property->getName()}' for resource '{$this->uri}'");
             }
 
             // Check for null values. This shouldn't occur, because mandatory properties shouldn't be specified as nullable, but let's check anyway
             if (is_null($value)) {
-                throw new \Exception("Missing mandatory property '{$property->getName()}' for resource '{$this->uri}'");
+                throw new MissingMandatoryPropertyException("Missing mandatory property '{$property->getName()}' for resource '{$this->uri}'");
             }
         }
     }
