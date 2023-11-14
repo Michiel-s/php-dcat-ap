@@ -12,19 +12,12 @@ class Catalogue extends Resource
 {
     /** @var string[] */
     protected static $REQUIRED_PROPERTIES = [
-        'dataset', 'description', 'publisher', 'title'
+        'description', 'publisher', 'title'
     ];
 
     /**********************************************************************************************
      * MANDATORY PROPERTIES
      *********************************************************************************************/
-
-    /**
-     * This property links the Catalogue with a Dataset that is part of the Catalogue.
-     * @var \PHP_DCAT_AP\DCAT\Dataset[]
-     */
-    #[URI('http://www.w3.org/ns/dcat#dataset')]
-    public array $dataset;
 
     /**
      * This property contains a free-text account of the Catalogue.
@@ -52,6 +45,13 @@ class Catalogue extends Resource
     /**********************************************************************************************
      * RECOMMENDED PROPERTIES
      *********************************************************************************************/
+
+    /**
+     * This property links the Catalogue with a Dataset that is part of the Catalogue.
+     * @var \PHP_DCAT_AP\DCAT\Dataset[]
+     */
+    #[URI('http://www.w3.org/ns/dcat#dataset')]
+    public array $dataset;
 
     /**
      * This property refers to a web page that acts as the main page for the Catalogue.
